@@ -92,6 +92,7 @@ function App() {
     const [isExploding, setIsExploding] = useState(false);
 
     const canvasRef = useRef(null);
+    const confettiCanvasRef = useRef(null);
 
     /* ===================================
      CONSTANTS
@@ -110,6 +111,74 @@ function App() {
             })),
         [],
     );
+
+    /* ===================================
+     CONFETTI EFFECT
+     =================================== */
+
+    useEffect(() => {
+        if (!showMessage) return;
+
+        const canvas = confettiCanvasRef.current;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const confetti = [];
+        const confettiCount = 150;
+        const colors = ['#ff6b9d', '#c44569', '#f8b500', '#ffd700', '#ff69b4', '#ff1493', '#ff6347', '#ff8c00'];
+
+        // Create confetti pieces
+        for (let i = 0; i < confettiCount; i++) {
+            confetti.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height - canvas.height,
+                size: Math.random() * 8 + 4,
+                speedY: Math.random() * 3 + 2,
+                speedX: Math.random() * 2 - 1,
+                rotation: Math.random() * 360,
+                rotationSpeed: Math.random() * 10 - 5,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                shape: Math.random() > 0.5 ? 'circle' : 'square',
+            });
+        }
+
+        // Animation loop
+        const animate = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            confetti.forEach((piece) => {
+                piece.y += piece.speedY;
+                piece.x += piece.speedX;
+                piece.rotation += piece.rotationSpeed;
+
+                // Reset confetti that falls off screen
+                if (piece.y > canvas.height) {
+                    piece.y = -20;
+                    piece.x = Math.random() * canvas.width;
+                }
+
+                ctx.save();
+                ctx.translate(piece.x, piece.y);
+                ctx.rotate((piece.rotation * Math.PI) / 180);
+                ctx.fillStyle = piece.color;
+
+                if (piece.shape === 'circle') {
+                    ctx.beginPath();
+                    ctx.arc(0, 0, piece.size / 2, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.fillRect(-piece.size / 2, -piece.size / 2, piece.size, piece.size);
+                }
+
+                ctx.restore();
+            });
+
+            requestAnimationFrame(animate);
+        };
+
+        animate();
+    }, [showMessage]);
 
     /* ===================================
      EXPLOSION EFFECT
@@ -231,6 +300,18 @@ function App() {
     if (showMessage) {
         return (
             <div className='container success'>
+                <canvas
+                    ref={confettiCanvasRef}
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        pointerEvents: 'none',
+                        zIndex: 2,
+                    }}
+                />
                 <div className='message-card'>
                     <h1 className='success-text'>🎉 YAY 🎉</h1>
                     <p className='success-message'>I knew you'd say yes 💕</p>
