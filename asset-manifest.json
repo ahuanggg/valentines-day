@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/valentines-day/static/css/main.374cc668.css",
+    "main.js": "/valentines-day/static/js/main.71b34834.js",
+    "static/media/pic2.JPEG": "/valentines-day/static/media/pic2.af6a773a953de970e3de.JPEG",
+    "static/media/pic1.JPEG": "/valentines-day/static/media/pic1.6eac0e2717a8443cf22d.JPEG",
+    "index.html": "/valentines-day/index.html",
+    "main.374cc668.css.map": "/valentines-day/static/css/main.374cc668.css.map",
+    "main.71b34834.js.map": "/valentines-day/static/js/main.71b34834.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.374cc668.css",
+    "static/js/main.71b34834.js"
+  ]
+}
