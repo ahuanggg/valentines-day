@@ -3,14 +3,103 @@ import './App.css';
 import pic1 from './pic1.JPEG';
 import pic2 from './pic2.JPEG';
 
+/* ===================================
+   LILY FLOWERS COMPONENT
+   =================================== */
+
+const LilyFlowers = () => (
+    <>
+        {/* Left flower - 15 degrees left */}
+        <svg className='lily-flower lily-left' viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>
+            {/* Stem */}
+            <path d='M100 300 Q100 200 100 150' stroke='#5a8f5a' strokeWidth='4' fill='none' />
+
+            {/* Leaves */}
+            <path d='M100 220 Q70 210 60 230 Q70 240 100 235' fill='#6fa86f' />
+            <path d='M100 190 Q130 180 140 200 Q130 210 100 205' fill='#6fa86f' />
+
+            {/* Lily petals */}
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#f1bfd8' opacity='0.9' transform='rotate(-30 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff9dcc' opacity='0.9' transform='rotate(30 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(90 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff62b6' opacity='0.9' transform='rotate(-90 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#fcaad1' opacity='0.9' transform='rotate(150 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(-150 100 120)' />
+
+            {/* Center of flower */}
+            <circle cx='100' cy='120' r='12' fill='#ffe066' />
+            <circle cx='100' cy='120' r='8' fill='#ffd700' />
+        </svg>
+
+        {/* Middle flower */}
+        <svg className='lily-flower lily-middle' viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>
+            {/* Stem */}
+            <path d='M100 300 Q100 200 100 150' stroke='#5a8f5a' strokeWidth='4' fill='none' />
+
+            {/* Leaves */}
+            <path d='M100 220 Q70 210 60 230 Q70 240 100 235' fill='#6fa86f' />
+            <path d='M100 190 Q130 180 140 200 Q130 210 100 205' fill='#6fa86f' />
+
+            {/* Lily petals */}
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#f1bfd8' opacity='0.9' transform='rotate(-30 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff9dcc' opacity='0.9' transform='rotate(30 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(90 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff62b6' opacity='0.9' transform='rotate(-90 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#fcaad1' opacity='0.9' transform='rotate(150 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(-150 100 120)' />
+
+            {/* Center of flower */}
+            <circle cx='100' cy='120' r='12' fill='#ffe066' />
+            <circle cx='100' cy='120' r='8' fill='#ffd700' />
+        </svg>
+
+        {/* Right flower - 15 degrees right */}
+        <svg className='lily-flower lily-right' viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>
+            {/* Stem */}
+            <path d='M100 300 Q100 200 100 150' stroke='#5a8f5a' strokeWidth='4' fill='none' />
+
+            {/* Leaves */}
+            <path d='M100 220 Q70 210 60 230 Q70 240 100 235' fill='#6fa86f' />
+            <path d='M100 190 Q130 180 140 200 Q130 210 100 205' fill='#6fa86f' />
+
+            {/* Lily petals */}
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#f1bfd8' opacity='0.9' transform='rotate(-30 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff9dcc' opacity='0.9' transform='rotate(30 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(90 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff62b6' opacity='0.9' transform='rotate(-90 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#fcaad1' opacity='0.9' transform='rotate(150 100 120)' />
+            <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(-150 100 120)' />
+
+            {/* Center of flower */}
+            <circle cx='100' cy='120' r='12' fill='#ffe066' />
+            <circle cx='100' cy='120' r='8' fill='#ffd700' />
+        </svg>
+    </>
+);
+
+/* ===================================
+   MAIN APP COMPONENT
+   =================================== */
+
 function App() {
+    /* ===================================
+     STATE MANAGEMENT
+     =================================== */
+
     const [noButtonPosition, setNoButtonPosition] = useState({ top: '50%', left: '50%' });
     const [showMessage, setShowMessage] = useState(false);
     const [noClickCount, setNoClickCount] = useState(0);
     const [isExploding, setIsExploding] = useState(false);
+
     const canvasRef = useRef(null);
 
-    // Generate hearts once
+    /* ===================================
+     CONSTANTS
+     =================================== */
+
+    const noButtonTexts = ['NO', 'PLEASE NO', 'I BEG YOU :(', 'STOP', 'DO YOU REALLY NOT WANT TO...', 'IMMA BLOW THIS UP'];
+
+    // Generate hearts once (memoized)
     const hearts = React.useMemo(
         () =>
             [...Array(15)].map((_, i) => ({
@@ -22,149 +111,88 @@ function App() {
         [],
     );
 
-    // Add this component at the top of your file, after the imports
-    const LilyFlowers = () => (
-        <>
-            {/* Left flower - 15 degrees left */}
-            <svg className='lily-flower lily-left' viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>
-                {/* Stem */}
-                <path d='M100 300 Q100 200 100 150' stroke='#5a8f5a' strokeWidth='4' fill='none' />
-
-                {/* Leaves */}
-                <path d='M100 220 Q70 210 60 230 Q70 240 100 235' fill='#6fa86f' />
-                <path d='M100 190 Q130 180 140 200 Q130 210 100 205' fill='#6fa86f' />
-
-                {/* Lily petals */}
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#f1bfd8' opacity='0.9' transform='rotate(-30 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff9dcc' opacity='0.9' transform='rotate(30 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(90 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff62b6' opacity='0.9' transform='rotate(-90 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#fcaad1' opacity='0.9' transform='rotate(150 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(-150 100 120)' />
-
-                {/* Center of flower */}
-                <circle cx='100' cy='120' r='12' fill='#ffe066' />
-                <circle cx='100' cy='120' r='8' fill='#ffd700' />
-            </svg>
-
-            {/* Middle flower */}
-            <svg className='lily-flower lily-middle' viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>
-                {/* Stem */}
-                <path d='M100 300 Q100 200 100 150' stroke='#5a8f5a' strokeWidth='4' fill='none' />
-
-                {/* Leaves */}
-                <path d='M100 220 Q70 210 60 230 Q70 240 100 235' fill='#6fa86f' />
-                <path d='M100 190 Q130 180 140 200 Q130 210 100 205' fill='#6fa86f' />
-
-                {/* Lily petals */}
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#f1bfd8' opacity='0.9' transform='rotate(-30 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff9dcc' opacity='0.9' transform='rotate(30 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(90 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff62b6' opacity='0.9' transform='rotate(-90 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#fcaad1' opacity='0.9' transform='rotate(150 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(-150 100 120)' />
-
-                {/* Center of flower */}
-                <circle cx='100' cy='120' r='12' fill='#ffe066' />
-                <circle cx='100' cy='120' r='8' fill='#ffd700' />
-            </svg>
-
-            {/* Right flower - 15 degrees right */}
-            <svg className='lily-flower lily-right' viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>
-                {/* Stem */}
-                <path d='M100 300 Q100 200 100 150' stroke='#5a8f5a' strokeWidth='4' fill='none' />
-
-                {/* Leaves */}
-                <path d='M100 220 Q70 210 60 230 Q70 240 100 235' fill='#6fa86f' />
-                <path d='M100 190 Q130 180 140 200 Q130 210 100 205' fill='#6fa86f' />
-
-                {/* Lily petals */}
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#f1bfd8' opacity='0.9' transform='rotate(-30 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff9dcc' opacity='0.9' transform='rotate(30 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(90 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff62b6' opacity='0.9' transform='rotate(-90 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#fcaad1' opacity='0.9' transform='rotate(150 100 120)' />
-                <ellipse cx='100' cy='120' rx='25' ry='50' fill='#ff8fc7' opacity='0.9' transform='rotate(-150 100 120)' />
-
-                {/* Center of flower */}
-                <circle cx='100' cy='120' r='12' fill='#ffe066' />
-                <circle cx='100' cy='120' r='8' fill='#ffd700' />
-            </svg>
-        </>
-    );
-
-    const noButtonTexts = ['NO', 'PLEASE NO', 'I BEG YOU :(', 'STOP', 'DO YOU REALLY NOT WANT TO...', 'IMMA BLOW THIS UP'];
+    /* ===================================
+     EXPLOSION EFFECT
+     =================================== */
 
     useEffect(() => {
-        if (isExploding) {
-            const canvas = canvasRef.current;
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+        if (!isExploding) return;
 
-            const particles = [];
-            const particleCount = 200;
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-            // Create particles
-            for (let i = 0; i < particleCount; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 15 + 5;
-                particles.push({
-                    x: centerX,
-                    y: centerY,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    size: Math.random() * 8 + 3,
-                    color: `hsl(${Math.random() * 60 + 10}, 100%, ${Math.random() * 30 + 50}%)`,
-                    alpha: 1,
-                    gravity: 0.3,
-                });
-            }
+        const particles = [];
+        const particleCount = 200;
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
 
-            let frame = 0;
-            const animate = () => {
-                frame++;
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 15 + 5;
 
-                particles.forEach((p) => {
-                    p.vy += p.gravity;
-                    p.x += p.vx;
-                    p.y += p.vy;
-                    p.alpha -= 0.01;
-
-                    if (p.alpha > 0) {
-                        ctx.globalAlpha = p.alpha;
-                        ctx.fillStyle = p.color;
-                        ctx.beginPath();
-                        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-                });
-
-                ctx.globalAlpha = 1;
-
-                if (frame < 150) {
-                    requestAnimationFrame(animate);
-                }
-            };
-
-            // Flash effect
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            setTimeout(() => {
-                ctx.fillStyle = 'black';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                animate();
-            }, 100);
+            particles.push({
+                x: centerX,
+                y: centerY,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                size: Math.random() * 8 + 3,
+                color: `hsl(${Math.random() * 60 + 10}, 100%, ${Math.random() * 30 + 50}%)`,
+                alpha: 1,
+                gravity: 0.3,
+            });
         }
+
+        // Animation loop
+        let frame = 0;
+        const animate = () => {
+            frame++;
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach((p) => {
+                p.vy += p.gravity;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.01;
+
+                if (p.alpha > 0) {
+                    ctx.globalAlpha = p.alpha;
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            });
+
+            ctx.globalAlpha = 1;
+
+            if (frame < 150) {
+                requestAnimationFrame(animate);
+            }
+        };
+
+        // Flash effect
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        setTimeout(() => {
+            ctx.fillStyle = 'black';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            animate();
+        }, 100);
     }, [isExploding]);
+
+    /* ===================================
+     EVENT HANDLERS
+     =================================== */
 
     const handleNoClick = (e) => {
         e.preventDefault();
 
+        // Trigger explosion on 6th click
         if (noClickCount === 5) {
             setIsExploding(true);
             return;
@@ -186,6 +214,11 @@ function App() {
         setShowMessage(true);
     };
 
+    /* ===================================
+     RENDER STATES
+     =================================== */
+
+    // Explosion state
     if (isExploding) {
         return (
             <div className='container exploding'>
@@ -194,6 +227,7 @@ function App() {
         );
     }
 
+    // Success state
     if (showMessage) {
         return (
             <div className='container success'>
@@ -205,6 +239,10 @@ function App() {
             </div>
         );
     }
+
+    /* ===================================
+     MAIN RENDER
+     =================================== */
 
     return (
         <div className='container'>
@@ -245,6 +283,7 @@ function App() {
             <div className='question-card'>
                 <div className='question-card-tape-bottom-left'></div>
                 <div className='question-card-tape-bottom-right'></div>
+
                 <h1 className='question-text'>WILL YOU BE MY GIRLFRIEND?</h1>
 
                 <div className='buttons-container' style={{ minHeight: '60px' }}>
@@ -267,6 +306,7 @@ function App() {
                     </button>
                 </div>
             </div>
+
             <LilyFlowers />
         </div>
     );
