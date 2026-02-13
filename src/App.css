@@ -1,8 +1,16 @@
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* ===================================
+   CONTAINER & BACKGROUNDS
+   =================================== */
 
 .container {
   min-height: 100vh;
@@ -23,27 +31,16 @@
   animation: gradientShift 5s ease infinite;
 }
 
-.message-card {
-  background: rgba(255, 157, 157, 0.9);
-  padding: 4rem 5rem;
-  border-radius: 2rem;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  z-index: 3;
+.container.exploding {
+  background: black !important;
+  animation: shake 0.5s;
+  position: relative;
 }
 
-.success-text {
-  font-size: 2rem;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
-}
+/* ===================================
+   HEARTS DECORATION
+   =================================== */
 
-.success-message {
-  font-size: 1.5rem;
-  color: #ffffff;
-  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
-}
 .hearts-background {
   position: absolute;
   width: 100%;
@@ -59,101 +56,9 @@
   animation: float 3s ease-in-out infinite;
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) rotate(5deg);
-  }
-}
-
-.polaroid:hover {
-  transform: scale(1.5);
-  z-index: 10;
-}
-
-.polaroid-left:hover {
-  transform: rotate(-8deg) scale(1.5);
-}
-
-.polaroid-right:hover {
-  transform: rotate(5deg) scale(1.5);
-}
-
-.polaroid {
-  position: absolute;
-  background: white;
-  padding: 0.5rem;
-  padding-bottom: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  z-index: 5;  /* changed from 1 to 4 */
-  transform: rotate(-5deg);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 280px;
-}
-
-
-.polaroid-image {
-  width: 200px;
-  height: 200px;
-  background: #f0f0f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.polaroid-left {
-  top: 10%;
-  left: 10%;
-  transform: rotate(-8deg);
-}
-
-.polaroid-right {
-  bottom: 15%;
-  right: 10%;
-  transform: rotate(5deg);
-}
-
-.polaroid::before,
-.polaroid::after {
-  content: '';
-  position: absolute;
-  width: 80px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid rgba(200, 200, 200, 0.5);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 6;  /* changed from z-index: 5 */
-}
-
-.polaroid-left::before {
-  top: -10px;
-  left: -20px;
-  transform: rotate(-39deg);
-}
-
-.polaroid-left::after {
-  bottom: -10px;
-  right: -27px;
-  transform: rotate(145deg);
-}
-
-.polaroid-right::before {
-  top: -1px;
-  right: -19px;
-  transform: rotate(45deg);
-}
-
-.polaroid-right::after {
-  bottom: -10px;
-  left: -25px;
-  transform: rotate(40deg);
-}
+/* ===================================
+   CARDS
+   =================================== */
 
 .question-card {
   background: rgba(255, 157, 157, 0.9);
@@ -161,7 +66,7 @@
   border-radius: 2rem;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
   text-align: center;
-  z-index: 3;  /* changed from 3 to 2 */
+  z-index: 3;
   max-width: 600px;
   width: 90%;
   position: relative;
@@ -190,6 +95,105 @@
   transform: rotate(15deg);
 }
 
+.message-card {
+  background: rgba(255, 157, 157, 0.9);
+  padding: 4rem 5rem;
+  border-radius: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 3;
+}
+
+/* ===================================
+   POLAROID PHOTOS
+   =================================== */
+
+.polaroid {
+  position: absolute;
+  background: white;
+  padding: 0.5rem;
+  padding-bottom: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+  transform: rotate(-5deg);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 280px;
+}
+
+.polaroid:hover {
+  transform: scale(1.5);
+  z-index: 10;
+}
+
+.polaroid-left {
+  top: 10%;
+  left: 10%;
+  transform: rotate(-8deg);
+}
+
+.polaroid-left:hover {
+  transform: rotate(-8deg) scale(1.5);
+}
+
+.polaroid-right {
+  bottom: 15%;
+  right: 10%;
+  transform: rotate(5deg);
+}
+
+.polaroid-right:hover {
+  transform: rotate(5deg) scale(1.5);
+}
+
+.polaroid::before,
+.polaroid::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 6;
+}
+
+.polaroid-left::before {
+  top: -10px;
+  left: -20px;
+  transform: rotate(-39deg);
+}
+
+.polaroid-left::after {
+  bottom: -10px;
+  right: -27px;
+  transform: rotate(145deg);
+}
+
+.polaroid-right::before {
+  top: -1px;
+  right: -19px;
+  transform: rotate(45deg);
+}
+
+.polaroid-right::after {
+  bottom: -10px;
+  left: -25px;
+  transform: rotate(40deg);
+}
+
+.polaroid-image {
+  width: 200px;
+  height: 200px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .polaroid-caption {
   font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
   font-size: 1.3rem;
@@ -208,6 +212,10 @@
   justify-content: center;
 }
 
+/* ===================================
+   TEXT ELEMENTS
+   =================================== */
+
 .question-text {
   font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
   font-size: 2rem;
@@ -217,6 +225,22 @@
   color: #ffffff;
 }
 
+.success-text {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+}
+
+.success-message {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+}
+
+/* ===================================
+   BUTTONS
+   =================================== */
 
 .buttons-container {
   display: flex;
@@ -257,6 +281,10 @@
   background: rgba(172, 172, 172, 0.8);
 }
 
+/* ===================================
+   DECORATIVE ELEMENTS
+   =================================== */
+
 .lily-flower {
   position: absolute;
   bottom: 0;
@@ -266,13 +294,74 @@
   height: 300px;
 }
 
-.success-text {
-  font-size: 2rem;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive;
+.explosion {
+  font-size: 20rem;
+  animation: explode 0.8s ease-out forwards;
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
+/* ===================================
+   ANIMATIONS
+   =================================== */
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-10px, 10px);
+  }
+  50% {
+    transform: translate(10px, -10px);
+  }
+  75% {
+    transform: translate(-10px, -10px);
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(5);
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
 
 @media (max-width: 768px) {
   .container {
@@ -329,55 +418,5 @@
   .btn {
     padding: 0.8rem 2rem;
     font-size: 1rem;
-  }
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.exploding {
-  background: black !important;
-  animation: shake 0.5s;
-  position: relative;
-}
-
-.explosion {
-  font-size: 20rem;
-  animation: explode 0.8s ease-out forwards;
-  position: absolute;
-  z-index: 1;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@keyframes shake {
-  0%, 100% { transform: translate(0, 0); }
-  25% { transform: translate(-10px, 10px); }
-  50% { transform: translate(10px, -10px); }
-  75% { transform: translate(-10px, -10px); }
-}
-
-@keyframes explode {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(3);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(5);
-    opacity: 0;
   }
 }
